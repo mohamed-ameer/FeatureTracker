@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "3ae22c05-1e15-4962-8ab9-d008665520fc",
+		"name": "Feature Request CRUD API",
+		"description": "Complete CRUD API collection for Feature Request doctype in Feature Tracker app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19584619",
+		"_collection_link": "https://bold-crater-612370.postman.co/workspace/InnoSoft~278c9027-45f2-4463-81dd-9f9dc569e0ca/collection/19584619-3ae22c05-1e15-4962-8ab9-d008665520fc?action=share&source=collection_link&creator=19584619"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usr\": \"{{username}}\",\n    \"pwd\": \"{{password}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/method/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"login"
+							]
+						},
+						"description": "Login to get session cookies for authentication"
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication endpoints"
+		},
+		{
+			"name": "Feature Requests - READ Operations",
+			"item": [
+				{
+					"name": "Get All Feature Requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.get_feature_requests?limit_page_length=10&limit_start=0",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.get_feature_requests"
+							],
+							"query": [
+								{
+									"key": "limit_page_length",
+									"value": "10",
+									"description": "Number of records per page (max 100)"
+								},
+								{
+									"key": "limit_start",
+									"value": "0",
+									"description": "Starting index for pagination"
+								},
+								{
+									"key": "order_by",
+									"value": "creation desc",
+									"description": "Field to order by",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "name,title,status,priority,date",
+									"description": "Comma-separated list of fields",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get paginated list of all feature requests"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Feature Requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.get_feature_requests?search=dashboard&limit_page_length=5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.get_feature_requests"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "dashboard",
+									"description": "Search term for title/description"
+								},
+								{
+									"key": "limit_page_length",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Search feature requests by title or description"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Feature Requests by Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.get_feature_requests?filters={\"status\":\"Opened\"}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.get_feature_requests"
+							],
+							"query": [
+								{
+									"key": "filters",
+									"value": "{\"status\":\"Opened\"}",
+									"description": "JSON filters object"
+								}
+							]
+						},
+						"description": "Filter feature requests by status"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Feature Requests by Priority",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.get_feature_requests?filters={\"priority\":\"High\"}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.get_feature_requests"
+							],
+							"query": [
+								{
+									"key": "filters",
+									"value": "{\"priority\":\"High\"}",
+									"description": "JSON filters object"
+								}
+							]
+						},
+						"description": "Filter feature requests by priority"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Feature Request",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.get_feature_request?name={{feature_request_name}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.get_feature_request"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{feature_request_name}}",
+									"description": "Name/ID of the feature request"
+								}
+							]
+						},
+						"description": "Get a single feature request by name/ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Feature Request Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.get_feature_request_stats",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.get_feature_request_stats"
+							]
+						},
+						"description": "Get statistics about feature requests including status and priority breakdowns"
+					},
+					"response": []
+				}
+			],
+			"description": "Read operations for feature requests"
+		},
+		{
+			"name": "Feature Requests - CREATE Operations",
+			"item": [
+				{
+					"name": "Create Feature Request - Basic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Feature Request from Postman\",\n    \"description\": \"This is a test feature request created via Postman API testing\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.create_feature_request",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.create_feature_request"
+							]
+						},
+						"description": "Create a basic feature request with only required fields"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Feature Request - Complete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Complete Feature Request from Postman\",\n    \"description\": \"This is a comprehensive test feature request with all fields specified\",\n    \"priority\": \"High\",\n    \"status\": \"Opened\",\n    \"date\": \"2025-07-31\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.create_feature_request",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.create_feature_request"
+							]
+						},
+						"description": "Create a feature request with all fields specified"
+					},
+					"response": []
+				}
+			],
+			"description": "Create operations for feature requests"
+		},
+		{
+			"name": "Feature Requests - UPDATE Operations",
+			"item": [
+				{
+					"name": "Update Feature Request - Status Only",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{feature_request_name}}\",\n    \"status\": \"In Progress\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.update_feature_request",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.update_feature_request"
+							]
+						},
+						"description": "Update only the status of a feature request"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Feature Request - Priority Only",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{feature_request_name}}\",\n    \"priority\": \"High\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.update_feature_request",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.update_feature_request"
+							]
+						},
+						"description": "Update only the priority of a feature request"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Feature Request - Complete",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{feature_request_name}}\",\n    \"title\": \"Updated Feature Request Title\",\n    \"description\": \"Updated description with more details\",\n    \"status\": \"Approved\",\n    \"priority\": \"Medium\",\n    \"date\": \"2025-08-01\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.update_feature_request",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.update_feature_request"
+							]
+						},
+						"description": "Update all fields of a feature request"
+					},
+					"response": []
+				}
+			],
+			"description": "Update operations for feature requests"
+		},
+		{
+			"name": "Feature Requests - DELETE Operations",
+			"item": [
+				{
+					"name": "Delete Feature Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token {{api_key}}:{{api_secret}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/method/feature_tracker.api.feature_requests.delete_feature_request?name={{feature_request_name}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"method",
+								"feature_tracker.api.feature_requests.delete_feature_request"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{feature_request_name}}",
+									"description": "Name/ID of the feature request to delete"
+								}
+							]
+						},
+						"description": "Delete a feature request by name/ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Delete operations for feature requests"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Set dynamic variables if needed",
+					"// pm.environment.set('timestamp', Date.now());"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Global test scripts",
+					"pm.test('Response time is less than 5000ms', function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+					"});",
+					"",
+					"pm.test('Response has proper content type', function () {",
+					"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "api_key",
+			"value": "your_api_key_here",
+			"type": "string"
+		},
+		{
+			"key": "api_secret",
+			"value": "your_api_secret_here",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "Administrator",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"key": "feature_request_name",
+			"value": "FRQ-2025-1",
+			"type": "string"
+		}
+	]
+}

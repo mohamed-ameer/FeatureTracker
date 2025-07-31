@@ -1,0 +1,101 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"mneaUD9m2k\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Features</span>\",\"col\":12}},{\"id\":\"1ROVNzj6N6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Add New Feature Request\",\"col\":3}},{\"id\":\"lgnJ7rY6Nn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Go To Feature Requests Page\",\"col\":3}},{\"id\":\"tl6TCP-Yor\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"1ND4rpTU3M\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opened Feature Request\",\"col\":4}},{\"id\":\"skjJQXaR-t\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pending Feature Request\",\"col\":4}},{\"id\":\"RRMt1X7qB2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"In Progress Feature Request\",\"col\":4}},{\"id\":\"8iT81gRAmn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approved Feature Request\",\"col\":4}},{\"id\":\"W1RNV2-hdh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rejected Feature Request\",\"col\":4}},{\"id\":\"uBmR8980kF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closed Feature Request\",\"col\":4}},{\"id\":\"b3FIMyKjWt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Canceled Feature Request\",\"col\":4}}]",
+ "creation": "2025-07-31 20:46:03.946120",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "add",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Features",
+ "links": [],
+ "modified": "2025-07-31 23:01:15.267862",
+ "modified_by": "Administrator",
+ "module": "Feature Tracker",
+ "name": "Features",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Opened Feature Request",
+   "link_to": "Feature Request",
+   "stats_filter": "[[\"Feature Request\",\"status\",\"=\",\"Opened\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "label": "In Progress Feature Request",
+   "link_to": "Feature Request",
+   "stats_filter": "[[\"Feature Request\",\"status\",\"=\",\"In Progress\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "Add New Feature Request",
+   "link_to": "Feature Request",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Go To Feature Requests Page",
+   "link_to": "feature-requests",
+   "type": "Page"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Pending Feature Request",
+   "link_to": "Feature Request",
+   "stats_filter": "[[\"Feature Request\",\"status\",\"=\",\"Pending\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Approved Feature Request",
+   "link_to": "Feature Request",
+   "stats_filter": "[[\"Feature Request\",\"status\",\"=\",\"Approved\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Rejected Feature Request",
+   "link_to": "Feature Request",
+   "stats_filter": "[[\"Feature Request\",\"status\",\"=\",\"Rejected\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Closed Feature Request",
+   "link_to": "Feature Request",
+   "stats_filter": "[[\"Feature Request\",\"status\",\"=\",\"Closed\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "label": "Canceled Feature Request",
+   "link_to": "Feature Request",
+   "stats_filter": "[[\"Feature Request\",\"status\",\"=\",\"Canceled\",false]]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Features"
+}

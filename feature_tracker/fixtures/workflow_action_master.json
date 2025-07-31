@@ -1,0 +1,79 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 15:43:54.059200",
+  "name": "Approve",
+  "workflow_action_name": "Approve"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 15:43:54.060106",
+  "name": "Reject",
+  "workflow_action_name": "Reject"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 15:43:54.060859",
+  "name": "Review",
+  "workflow_action_name": "Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 15:55:26.292600",
+  "name": "Submit for review",
+  "workflow_action_name": "Submit for review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 15:57:54.148973",
+  "name": "Complete feature",
+  "workflow_action_name": "Complete feature"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 15:59:12.551809",
+  "name": "Final closure",
+  "workflow_action_name": "Final closure"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 20:38:06.434226",
+  "name": "Cancel",
+  "workflow_action_name": "Cancel"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 15:56:00.660871",
+  "name": "Approve feature",
+  "workflow_action_name": "Approve feature"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 15:56:44.629015",
+  "name": "Reject feature",
+  "workflow_action_name": "Reject feature"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 15:57:24.180992",
+  "name": "Start implementation",
+  "workflow_action_name": "Start implementation"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-07-31 15:58:34.919337",
+  "name": "Close without work",
+  "workflow_action_name": "Close without work"
+ }
+]

@@ -1,33 +1,71 @@
-### Feature Tracker
+# Feature Tracker App By Mohamed Amir
 
-An internal feature tracking tool built with Frappe, designed to help teams monitor the development progress of product features, assign responsibilities, and track deadlines and status updates — all in one place.
+## Overview
+
+An internal feature tracking tool built with Frappe, designed to help teams monitor the development progress of product features.
+
+## Disclaimer
+
+Installing or Updating this app may result in data overwriting or data loss regarding the following modules:
+
+1. Workspaces
 
 ### Installation
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+1. Install the App to the bench from the Repository:
 
-```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app feature_tracker
+```
+bench get-app --branch [branch-name] feature_tracker https://github.com/mohamed-ameer/FeatureTracker.git
 ```
 
-### Contributing
+2. Install the App to the site:
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
-
-```bash
-cd apps/feature_tracker
-pre-commit install
+```
+bench --site [site-name] install-app feature_tracker
 ```
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+3. Migrate the changes:
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+```
+bench --site [site-name] migrate
+```
 
-### License
+4. Build the App:
 
-mit
+```
+bench --site [site-name] build
+```
+
+## Updating the App
+
+1. Update the App
+
+```
+bench update --reset --apps feature_tracker
+```
+
+2. Migrate the changes:
+
+```
+bench --site [site-name] migrate
+```
+
+3. Build the App:
+
+```
+bench --site [site-name] build
+```
+
+## Uninstalling the App
+
+1. Uninstall the App from the site:
+
+```
+bench --site [site-name] uninstall-app feature_tracker
+```
+
+2. Remove the App from the bench:
+
+```
+bench remove-app feature_tracker
+```

@@ -1,9 +1,35 @@
 app_name = "feature_tracker"
 app_title = "Feature Tracker"
 app_publisher = "Mohamed Amir"
-app_description = "An internal feature tracking tool built with Frappe, designed to help teams monitor the development progress of product features, assign responsibilities, and track deadlines and status updates — all in one place."
+app_description = "An internal feature tracking tool built with Frappe, designed to help teams monitor the development progress of product features."
 app_email = "mohamedamirr424@gmail.com"
 app_license = "mit"
+
+# Website Context & Branding
+# ----------
+
+app_logo_url = "/assets/feature_tracker/images/branding/logo.png"
+
+website_context = {
+	"favicon": "/assets/feature_tracker/images/branding/favicon.png",
+	"splash_image": "/assets/feature_tracker/images/branding/logo.png"
+}
+
+
+# Installation
+# ------------
+
+after_install = "feature_tracker.utils.install.after_install"
+after_migrate = "feature_tracker.utils.install.after_migrate"
+
+# Fixtures
+# ------------
+
+fixtures = [
+	{"doctype": "Workflow", "filters": {"name": ["in", ["Feature Request Workflow"]]}},
+    {"doctype": "Workflow State"},
+    {"doctype": "Workflow Action Master"},
+]
 
 # Apps
 # ------------------
@@ -78,12 +104,6 @@ app_license = "mit"
 # 	"methods": "feature_tracker.utils.jinja_methods",
 # 	"filters": "feature_tracker.utils.jinja_filters"
 # }
-
-# Installation
-# ------------
-
-# before_install = "feature_tracker.install.before_install"
-# after_install = "feature_tracker.install.after_install"
 
 # Uninstallation
 # ------------

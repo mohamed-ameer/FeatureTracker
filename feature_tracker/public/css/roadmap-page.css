@@ -1,0 +1,293 @@
+/* Feature Requests Roadmap Page Styles */
+
+.roadmap-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 150px);
+}
+
+.roadmap-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.roadmap-header h2 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.roadmap-board {
+    margin: 0 -10px;
+}
+
+.roadmap-column {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    min-height: 600px;
+}
+
+.column-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.column-header h4 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-count {
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.feature-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feature-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #007bff;
+}
+
+.feature-card-header {
+    margin-bottom: 10px;
+}
+
+.feature-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.feature-number {
+    font-size: 12px;
+    font-weight: 500;
+    color: #6c757d;
+    margin-left: auto;
+}
+
+.feature-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2c3e50;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.feature-meta {
+    font-size: 12px;
+}
+
+.priority-high {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.priority-medium {
+    background-color: #ffc107 !important;
+    color: #000 !important;
+}
+
+.priority-low {
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+/* Planned Column Styling */
+.roadmap-column[data-status="planned"] {
+    border-left: 4px solid #007bff;
+}
+
+.roadmap-column[data-status="planned"] .column-header h4 {
+    color: #007bff;
+}
+
+/* In Progress Column Styling */
+.roadmap-column[data-status="in-progress"] {
+    border-left: 4px solid #ffc107;
+}
+
+.roadmap-column[data-status="in-progress"] .column-header h4 {
+    color: #ffc107;
+}
+
+/* Complete Column Styling */
+.roadmap-column[data-status="complete"] {
+    border-left: 4px solid #28a745;
+}
+
+.roadmap-column[data-status="complete"] .column-header h4 {
+    color: #28a745;
+}
+
+/* Empty state styling */
+.feature-cards .text-center {
+    padding: 40px 20px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Loading state styling */
+.feature-cards .text-center.text-muted {
+    padding: 40px 20px;
+    color: #6c757d;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .roadmap-board {
+        margin: 0;
+    }
+    
+    .roadmap-column {
+        margin: 0 0 20px 0;
+        min-height: auto;
+    }
+    
+    .roadmap-container {
+        padding: 15px;
+    }
+}
+
+/* Dialog customizations */
+.modal-dialog .form-group {
+    margin-bottom: 15px;
+}
+
+.modal-dialog .control-label {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.modal-dialog .form-control[readonly] {
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+/* Badge customizations for status */
+.badge.status-opened {
+    background-color: #007bff;
+    color: white;
+}
+
+.badge.status-pending {
+    background-color: #6c757d;
+    color: white;
+}
+
+.badge.status-in-progress {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.badge.status-approved {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge.status-closed {
+    background-color: #6c757d;
+    color: white;
+}
+
+.badge.status-rejected {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge.status-canceled {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Animation for card loading */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feature-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Custom scrollbar for columns */
+.roadmap-column {
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.roadmap-column::-webkit-scrollbar {
+    width: 6px;
+}
+
+.roadmap-column::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.roadmap-column::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.roadmap-column::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Header improvements */
+.page-head .page-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Primary action button styling */
+.page-head .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: 500;
+}
+
+.page-head .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
