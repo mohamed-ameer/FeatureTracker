@@ -2,6 +2,10 @@
 
 [Screencast from 08-01-2025 02:19:02 AM.webm](https://github.com/user-attachments/assets/01bc7a42-35fb-440c-b7e8-b9d50632dbbe)
 
+### [see in production: http://147.182.198.64/](http://147.182.198.64/)
+
+- username: Administrator
+- password: admin
 
 ## Overview
 
