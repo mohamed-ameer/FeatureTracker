@@ -15,9 +15,9 @@ API Endpoints:
 
 import frappe, feature_tracker
 from frappe import _
-from frappe.utils import cint, today, getdate, add_days
+from frappe.utils import cint, today, add_days
 from typing import Dict, Optional, Any
-import json
+from .uilities import validate_permission, validate_document_exists, validate_required_field, validate_choice_field, validate_date_format, parse_filters, build_search_filters, get_pagination_info
 
 
 # Constants for validation
@@ -25,80 +25,6 @@ VALID_PRIORITIES = ["High", "Medium", "Low"]
 VALID_STATUSES = ["Opened", "Pending", "In Progress", "Approved", "Rejected", "Closed", "Canceled"]
 DEFAULT_FIELDS = ['name', 'title', 'description', 'status', 'priority', 'date', 'creation', 'modified', 'owner', 'modified_by']
 MAX_PAGE_LENGTH = 100
-
-
-def _validate_permission(permission_type: str, doc_name: Optional[str] = None) -> None:
-    """Validate user permissions for Feature Request doctype"""
-    if not frappe.has_permission("Feature Request", permission_type, doc_name):
-        frappe.throw(_(feature_tracker.ERRORS.get("no_read_permission")), frappe.PermissionError)
-
-
-def _validate_document_exists(name: str) -> None:
-    """Validate that a Feature Request document exists"""
-    if not frappe.db.exists("Feature Request", name):
-        frappe.throw(_(feature_tracker.ERRORS.get("feature_request_not_exist")).format(name), frappe.DoesNotExistError)
-
-
-def _validate_required_field(value: str, field_name: str) -> None:
-    """Validate that a required field is not empty"""
-    if not value or not value.strip():
-        frappe.throw(_(feature_tracker.ERRORS.get("field_required")).format(field_name), frappe.ValidationError)
-
-
-def _validate_choice_field(value: str, field_name: str, valid_choices: list) -> None:
-    """Validate that a field value is from the allowed choices"""
-    if value not in valid_choices:
-        frappe.throw(_(feature_tracker.ERRORS.get("invalid_choice")).format(field_name, ", ".join(valid_choices)), frappe.ValidationError)
-
-
-def _validate_date_format(date_str: str) -> None:
-    """Validate date format"""
-    try:
-        getdate(date_str)
-    except Exception:
-        frappe.throw(_(feature_tracker.ERRORS.get("invalid_date_format")), frappe.ValidationError)
-
-
-def _parse_filters(filters: Optional[str]) -> Dict:
-    """Parse and validate filters parameter"""
-    if not filters:
-        return {}
-    
-    try:
-        return json.loads(filters) if isinstance(filters, str) else filters
-    except (json.JSONDecodeError, TypeError):
-        frappe.throw(_(feature_tracker.ERRORS.get("invalid_filters_format")), frappe.ValidationError)
-
-
-def _build_search_filters(search: str, existing_filters: Dict) -> Dict:
-    """Build search filters for title and description"""
-    search_term = f'%{search}%'
-    
-    if existing_filters:
-        # Combine with existing filters using AND
-        return {**existing_filters, 'title': ['like', search_term]}
-    else:
-        # Use OR condition for title and description search
-        return [
-            ['title', 'like', search_term],
-            ['description', 'like', search_term]
-        ]
-
-
-def _get_pagination_info(total_count: int, limit_start: int, limit_page_length: int) -> Dict:
-    """Calculate pagination information"""
-    total_pages = (total_count + limit_page_length - 1) // limit_page_length
-    current_page = (limit_start // limit_page_length) + 1
-    
-    return {
-        'current_page': current_page,
-        'total_pages': total_pages,
-        'limit_start': limit_start,
-        'limit_page_length': limit_page_length,
-        'has_next': current_page < total_pages,
-        'has_previous': current_page > 1
-    }
-
 
 @frappe.whitelist()
 def get_feature_requests(
@@ -114,10 +40,10 @@ def get_feature_requests(
     """
     try:
         # Validate permissions
-        _validate_permission("read")
+        validate_permission("read")
         
         # Parse and validate parameters
-        parsed_filters = _parse_filters(filters)
+        parsed_filters = parse_filters(filters)
         field_list = [field.strip() for field in fields.split(',')] if fields else DEFAULT_FIELDS
         order_by = order_by or 'creation desc'
         limit_start = cint(limit_start)
@@ -125,7 +51,7 @@ def get_feature_requests(
         
         # Add search filters if provided
         if search:
-            parsed_filters = _build_search_filters(search, parsed_filters)
+            parsed_filters = build_search_filters(search, parsed_filters)
         
         # Get data
         total_count = frappe.db.count('Feature Request', filters=parsed_filters)
@@ -141,7 +67,7 @@ def get_feature_requests(
         return {
             'data': data,
             'total_count': total_count,
-            'page_info': _get_pagination_info(total_count, limit_start, limit_page_length)
+            'page_info': get_pagination_info(total_count, limit_start, limit_page_length)
         }
         
     except Exception as e:
@@ -156,9 +82,9 @@ def get_feature_request(name: str) -> Dict[str, Any]:
     """
     try:
         # Validate input and permissions
-        _validate_required_field(name, "Feature Request name")
-        _validate_document_exists(name)
-        _validate_permission("read", name)
+        validate_required_field(name, "Feature Request name")
+        validate_document_exists(name)
+        validate_permission("read", name)
         
         # Get document
         doc = frappe.get_doc("Feature Request", name)
@@ -195,19 +121,19 @@ def create_feature_request(
     """
     try:
         # Validate permissions
-        _validate_permission("create")
+        validate_permission("create")
         
         # Validate required fields
-        _validate_required_field(title, "Title")
-        _validate_required_field(description, "Description")
+        validate_required_field(title, "Title")
+        validate_required_field(description, "Description")
         
         # Validate choice fields
-        _validate_choice_field(priority, "Priority", VALID_PRIORITIES)
-        _validate_choice_field(status, "Status", VALID_STATUSES)
+        validate_choice_field(priority, "Priority", VALID_PRIORITIES)
+        validate_choice_field(status, "Status", VALID_STATUSES)
         
         # Validate and set date
         if date:
-            _validate_date_format(date)
+            validate_date_format(date)
         else:
             date = today()
         
@@ -259,32 +185,32 @@ def update_feature_request(
     """
     try:
         # Validate input and permissions
-        _validate_required_field(name, "Feature Request name")
-        _validate_document_exists(name)
-        _validate_permission("write", name)
+        validate_required_field(name, "Feature Request name")
+        validate_document_exists(name)
+        validate_permission("write", name)
         
         # Get document
         doc = frappe.get_doc("Feature Request", name)
         
         # Update fields if provided
         if title is not None:
-            _validate_required_field(title, "Title")
+            validate_required_field(title, "Title")
             doc.title = title.strip()
             
         if description is not None:
-            _validate_required_field(description, "Description")
+            validate_required_field(description, "Description")
             doc.description = description.strip()
             
         if priority is not None:
-            _validate_choice_field(priority, "Priority", VALID_PRIORITIES)
+            validate_choice_field(priority, "Priority", VALID_PRIORITIES)
             doc.priority = priority
             
         if status is not None:
-            _validate_choice_field(status, "Status", VALID_STATUSES)
+            validate_choice_field(status, "Status", VALID_STATUSES)
             doc.status = status
             
         if date is not None:
-            _validate_date_format(date)
+            validate_date_format(date)
             doc.date = date
         
         # Save document
@@ -319,9 +245,9 @@ def delete_feature_request(name: str) -> Dict[str, Any]:
     """
     try:
         # Validate input and permissions
-        _validate_required_field(name, "Feature Request name")
-        _validate_document_exists(name)
-        _validate_permission("delete", name)
+        validate_required_field(name, "Feature Request name")
+        validate_document_exists(name)
+        validate_permission("delete", name)
         
         # Get document for logging
         doc = frappe.get_doc("Feature Request", name)
@@ -350,7 +276,7 @@ def get_feature_request_stats() -> Dict[str, Any]:
     """
     try:
         # Validate permissions
-        _validate_permission("read")
+        validate_permission("read")
         
         # Get status counts
         status_counts = frappe.db.sql("""
