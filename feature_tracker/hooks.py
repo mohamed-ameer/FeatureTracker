@@ -26,9 +26,9 @@ after_migrate = "feature_tracker.utils.install.after_migrate"
 # ------------
 
 fixtures = [
-	{"doctype": "Workflow", "filters": {"name": ["in", ["Feature Request Workflow"]]}},
-    {"doctype": "Workflow State"},
-    {"doctype": "Workflow Action Master"},
+	"Workflow",
+    "Workflow State",
+    "Workflow Action Master",
 ]
 
 # Apps
