@@ -1,5 +1,8 @@
 # Feature Tracker App By Mohamed Amir
 
+[Screencast from 08-01-2025 02:19:02 AM.webm](https://github.com/user-attachments/assets/01bc7a42-35fb-440c-b7e8-b9d50632dbbe)
+
+
 ## Overview
 
 An internal feature tracking tool built with Frappe, designed to help teams monitor the development progress of product features.
@@ -15,7 +18,7 @@ Installing or Updating this app may result in data overwriting or data loss rega
 1. Install the App to the bench from the Repository:
 
 ```
-bench get-app --branch [branch-name] feature_tracker https://github.com/mohamed-ameer/FeatureTracker.git
+bench get-app https://github.com/mohamed-ameer/FeatureTracker.git
 ```
 
 2. Install the App to the site:
