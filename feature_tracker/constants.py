@@ -23,6 +23,7 @@ ERRORS = {
     "invalid_priority": "Priority must be one of: {0}",
     "invalid_status": "Status must be one of: {0}",
     "invalid_date_format": "Invalid date format. Use YYYY-MM-DD",
+    "invalid_date": "Date must be today",
 
     # Generic Errors
     "error_fetching_feature_requests": "An error occurred while fetching feature requests",
