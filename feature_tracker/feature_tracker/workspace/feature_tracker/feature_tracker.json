@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"mneaUD9m2k\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Features</span>\",\"col\":12}},{\"id\":\"1ROVNzj6N6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Add New Feature Request\",\"col\":3}},{\"id\":\"lgnJ7rY6Nn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Go To Feature Requests Page\",\"col\":3}},{\"id\":\"tl6TCP-Yor\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"1ND4rpTU3M\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opened Feature Request\",\"col\":4}},{\"id\":\"skjJQXaR-t\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pending Feature Request\",\"col\":4}},{\"id\":\"RRMt1X7qB2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"In Progress Feature Request\",\"col\":4}},{\"id\":\"8iT81gRAmn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approved Feature Request\",\"col\":4}},{\"id\":\"W1RNV2-hdh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rejected Feature Request\",\"col\":4}},{\"id\":\"uBmR8980kF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closed Feature Request\",\"col\":4}},{\"id\":\"b3FIMyKjWt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Canceled Feature Request\",\"col\":4}}]",
+ "content": "[{\"id\":\"mneaUD9m2k\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Feature Tracker</span>\",\"col\":12}},{\"id\":\"1ROVNzj6N6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Add New Feature Request\",\"col\":3}},{\"id\":\"lgnJ7rY6Nn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Go To Feature Requests Page\",\"col\":3}},{\"id\":\"tl6TCP-Yor\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"sGCZgRo2FS\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Feature Requests Status</b></span>\",\"col\":12}},{\"id\":\"1ND4rpTU3M\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opened Feature Request\",\"col\":4}},{\"id\":\"skjJQXaR-t\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Pending Feature Request\",\"col\":4}},{\"id\":\"RRMt1X7qB2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"In Progress Feature Request\",\"col\":4}},{\"id\":\"8iT81gRAmn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approved Feature Request\",\"col\":4}},{\"id\":\"W1RNV2-hdh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rejected Feature Request\",\"col\":4}},{\"id\":\"uBmR8980kF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closed Feature Request\",\"col\":4}},{\"id\":\"b3FIMyKjWt\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Canceled Feature Request\",\"col\":4}}]",
  "creation": "2025-07-31 20:46:03.946120",
  "custom_blocks": [],
  "docstatus": 0,
@@ -9,14 +9,14 @@
  "hide_custom": 0,
  "icon": "add",
  "idx": 0,
- "indicator_color": "green",
+ "indicator_color": "",
  "is_hidden": 0,
- "label": "Features",
+ "label": "Feature Tracker",
  "links": [],
- "modified": "2025-07-31 23:01:15.267862",
+ "modified": "2025-08-01 08:09:53.497499",
  "modified_by": "Administrator",
  "module": "Feature Tracker",
- "name": "Features",
+ "name": "Feature Tracker",
  "number_cards": [],
  "owner": "Administrator",
  "parent_page": "",
@@ -97,5 +97,5 @@
    "type": "DocType"
   }
  ],
- "title": "Features"
+ "title": "Feature Tracker"
 }
