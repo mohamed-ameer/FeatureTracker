@@ -17,13 +17,13 @@ import frappe, feature_tracker
 from frappe import _
 from frappe.utils import cint, today, add_days
 from typing import Dict, Optional, Any
-from .uilities import validate_permission, validate_document_exists, validate_required_field, validate_choice_field, validate_date_format, parse_filters, build_search_filters, get_pagination_info
+from .uilities import validate_permission, validate_document_exists, validate_required_field, validate_choice_field, validate_date_format, parse_filters, build_search_filters, get_pagination_info, get_default_fields, get_choice_options
 
 
 # Constants for validation
-VALID_PRIORITIES = ["High", "Medium", "Low"]
-VALID_STATUSES = ["Opened", "Pending", "In Progress", "Approved", "Rejected", "Closed", "Canceled"]
-DEFAULT_FIELDS = ['name', 'title', 'description', 'status', 'priority', 'date', 'creation', 'modified', 'owner', 'modified_by']
+VALID_PRIORITIES = get_choice_options("Feature Request", "priority")
+VALID_STATUSES = get_choice_options("Feature Request", "status")
+DEFAULT_FIELDS = get_default_fields("Feature Request", include_fields=["name", 'creation', 'modified', 'owner', 'modified_by'])
 MAX_PAGE_LENGTH = 100
 
 @frappe.whitelist()

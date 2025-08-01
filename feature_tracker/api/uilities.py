@@ -78,3 +78,33 @@ def get_pagination_info(total_count: int, limit_start: int, limit_page_length: i
         'has_previous': current_page > 1
     }
 
+def get_doctype_meta(doctype: str):
+    """Get doctype metadata with caching for performance"""
+    return frappe.get_meta(doctype)
+
+
+def get_default_fields(doctype: str, exclude_fields: list = ["amended_from"], include_fields: list = ["name", 'creation', 'modified', 'owner', 'modified_by']) -> list:
+    """Get list of visible, non-break fields from doctype metadata"""
+    meta = get_doctype_meta(doctype)
+    
+    # Get all fields that are not break fields, not hidden, and have fieldnames
+    default_fields = [
+        df.fieldname for df in meta.fields
+        if (df.fieldtype not in ["Section Break", "Column Break", "Tab Break"] and
+            not df.hidden and
+            df.fieldname and
+            df.fieldname not in exclude_fields)
+    ]
+    
+    return include_fields + default_fields
+
+
+def get_choice_options(doctype: str, fieldname: str) -> list:
+    """Get choice options for a select/choice field from doctype metadata"""
+    meta = get_doctype_meta(doctype)
+    field = meta.get_field(fieldname)
+    
+    if field and field.options:
+        return field.options.splitlines()
+    
+    return []
