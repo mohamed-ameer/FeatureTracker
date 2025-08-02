@@ -11,6 +11,26 @@
 
 https://hub.docker.com/repository/docker/ameer577/feature_tracker/tags
 
+```bash
+docker pull ameer577/feature_tracker:latest
+git clone https://github.com/frappe/frappe_docker 
+cd frappe_docker
+nano pwd.yml
+```
+
+change any `frappe/erpnext:v15.60.1` with your image (eg. `ameer577/feature_tracker:latest` )
+
+then,
+
+at `--install-app erpnext` add `--install-app erpnext --install-app feature_tracker` 
+
+then
+
+```bash
+docker compose -f pwd.yml up -d
+docker logs frappe_container-create-site-1 -f
+```
+
 ## Overview
 
 An internal feature tracking tool built with Frappe, designed to help teams monitor the development progress of product features.
