@@ -2,34 +2,12 @@
 
 [Screencast from 08-01-2025 02:19:02 AM.webm](https://github.com/user-attachments/assets/01bc7a42-35fb-440c-b7e8-b9d50632dbbe)
 
-### [see in production: http://147.182.198.64/](http://147.182.198.64/)
+#### [see in production: http://147.182.198.64/](http://147.182.198.64/)
 
 - username: Administrator
 - password: admin
 
-### Run With Docker
-
-https://hub.docker.com/repository/docker/ameer577/feature_tracker/tags
-
-```bash
-docker pull ameer577/feature_tracker:latest
-git clone https://github.com/frappe/frappe_docker 
-cd frappe_docker
-nano pwd.yml
-```
-
-change any `frappe/erpnext:v15.60.1` with your image (eg. `ameer577/feature_tracker:latest` )
-
-then,
-
-at `--install-app erpnext` add `--install-app erpnext --install-app feature_tracker` 
-
-then
-
-```bash
-docker compose -f pwd.yml up -d
-docker logs frappe_container-create-site-1 -f
-```
+---
 
 ## Overview
 
@@ -99,4 +77,41 @@ bench --site [site-name] uninstall-app feature_tracker
 
 ```
 bench remove-app feature_tracker
+```
+---
+
+## Installing using Docker
+
+[![View on Docker Hub](https://img.shields.io/badge/Docker%20Hub-View%20on%20Docker%20Hub-2496ED?style=for-the-badge&logo=docker)](https://hub.docker.com/r/ameer577/feature_tracker)
+
+1. Pull the image from dockerhub:
+
+```
+docker pull ameer577/feature_tracker:latest
+```
+
+2. Clone frappe_docker
+
+```
+git clone https://github.com/frappe/frappe_docker 
+cd frappe_docker
+```
+
+3. Setup the image in the `pwd.yml` file:
+
+```
+nano pwd.yml
+```
+
+change any `frappe/erpnext:v15.60.1` with your image (eg. `ameer577/feature_tracker:latest` )
+
+then,
+
+replace `--install-app erpnext` with `--install-app erpnext --install-app feature_tracker` 
+
+4. Start the container using docker compose
+
+```bash
+docker compose -f pwd.yml up -d
+docker logs frappe_container-create-site-1 -f
 ```
