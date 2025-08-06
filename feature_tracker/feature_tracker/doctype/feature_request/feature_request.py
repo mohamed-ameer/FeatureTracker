@@ -12,8 +12,7 @@ class FeatureRequest(Document):
 		self.validate_date()
 
 	def validate_date(self):
-		# Validate that the date is today for a new feature request
-		# Only validate on creation
+		""" Validate that the date is today for a new feature request Only validate on creation """
 		if self.is_new():
 			if get_date_str(self.date) != today():
 				frappe.throw(_(feature_tracker.ERRORS.get("invalid_date")))
