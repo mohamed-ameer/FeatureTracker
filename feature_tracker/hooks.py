@@ -31,6 +31,13 @@ fixtures = [
     "Workflow Action Master",
 ]
 
+# Svg Icons
+# ------------------
+# include app icons in desk
+app_include_icons = [
+    "feature_tracker/icons/my_custom_icons.svg"
+]
+
 # Apps
 # ------------------
 
@@ -73,11 +80,6 @@ fixtures = [
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
-
-# Svg Icons
-# ------------------
-# include app icons in desk
-# app_include_icons = "feature_tracker/public/icons.svg"
 
 # Home Pages
 # ----------
